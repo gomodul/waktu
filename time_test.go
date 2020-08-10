@@ -18,3 +18,8 @@ func TestTime_LastDay(t *testing.T) {
 func TestLastDay(t *testing.T) {
 	fmt.Println(LastDay())
 }
+
+func TestDate(t *testing.T) {
+	now := Date(2020, Now().Month(), 1, 0, 0, 0, 0, nil)
+	fmt.Println(now)
+}

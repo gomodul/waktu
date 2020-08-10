@@ -1,6 +1,8 @@
 package waktu
 
-import "time"
+import (
+	"time"
+)
 
 // Time struct
 type Time struct {
@@ -28,6 +30,9 @@ func Parse(layout, value string) (Time, error) {
 
 // Date func
 func Date(year int, month Month, day, hour, min, sec, nsec int, loc *time.Location) Time {
+	if loc == nil {
+		loc = time.UTC
+	}
 	return Time{time.Date(year, time.Month(month), day, hour, min, sec, nsec, loc)}
 }
 
