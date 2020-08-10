@@ -15,6 +15,11 @@ func TestTime_LastDay(t *testing.T) {
 	fmt.Println(now.LastDay())
 }
 
+func TestMonth_LastDay(t *testing.T) {
+	now := Now()
+	fmt.Println(now.SetMonth(9).LastDay())
+}
+
 func TestLastDay(t *testing.T) {
 	fmt.Println(LastDay())
 }

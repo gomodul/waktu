@@ -1,76 +1,115 @@
 package waktu
 
 import (
-	"fmt"
 	"testing"
 )
 
 var now = Date(1993, 9, 10, 11, 37, 0, 0, GetLocationByUTCOffset(7))
 
 func TestTime_Format_ANSIC(t *testing.T) {
-	if now.Format(ANSIC) != "Fri Sep 10 11:37:00 1993" {
+	if now.Format(ANSIC) != now.Time.Format(ANSIC) {
 		t.Fatal("invalid result")
 	}
 }
 
 func TestTime_Format_UnixDate(t *testing.T) {
-	if now.Format(UnixDate) != "Fri Sep 10 11:37:00 GMT+7 1993" {
+	if now.Format(UnixDate) != now.Time.Format(UnixDate) {
 		t.Fatal("invalid result")
 	}
 }
 
 func TestTime_Format_RubyDate(t *testing.T) {
-	fmt.Println(now.Format(RubyDate))
+	if now.Format(RubyDate) != now.Time.Format(RubyDate) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_RFC822(t *testing.T) {
-	fmt.Println(now.Format(RFC822))
+	if now.Format(RFC822) != now.Time.Format(RFC822) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_RFC822Z(t *testing.T) {
-	fmt.Println(now.Format(RFC822Z))
+	if now.Format(RFC822Z) != now.Time.Format(RFC822Z) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_RFC850(t *testing.T) {
-	fmt.Println(now.Format(RFC850))
+	if now.Format(RFC850) != now.Time.Format(RFC850) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_RFC1123(t *testing.T) {
-	fmt.Println(now.Format(RFC1123))
+	if now.Format(RFC1123) != now.Time.Format(RFC1123) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_RFC1123Z(t *testing.T) {
-	fmt.Println(now.Format(RFC1123Z))
+	if now.Format(RFC1123Z) != now.Time.Format(RFC1123Z) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_RFC3339(t *testing.T) {
-	fmt.Println(now.Format(RFC3339))
+	if now.Format(RFC3339) != now.Time.Format(RFC3339) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_RFC3339Nano(t *testing.T) {
-	fmt.Println(now.Format(RFC3339Nano))
+	if now.Format(RFC3339Nano) != now.Time.Format(RFC3339Nano) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_Kitchen(t *testing.T) {
-	fmt.Println(now.Format(Kitchen))
+	if now.Format(Kitchen) != now.Time.Format(Kitchen) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_Stamp(t *testing.T) {
-	fmt.Println(now.Format(Stamp))
+	if now.Format(Stamp) != now.Time.Format(Stamp) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_StampMilli(t *testing.T) {
-	fmt.Println(now.Format(StampMilli))
+	if now.Format(StampMilli) != now.Time.Format(StampMilli) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_StampMicro(t *testing.T) {
-	fmt.Println(now.Format(StampMicro))
+	if now.Format(StampMicro) != now.Time.Format(StampMicro) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_StampNano(t *testing.T) {
-	fmt.Println(now.Format(StampNano))
+	if now.Format(StampNano) != now.Time.Format(StampNano) {
+		t.Fatal("invalid result")
+	}
 }
 
 func TestTime_Format_ISO8601(t *testing.T) {
-	fmt.Println(now.Format(ISO8601))
+	if now.Format(ISO8601) != now.Time.Format(ISO8601) {
+		t.Fatal("invalid result")
+	}
+}
+
+func TestTime_Format_YYMM(t *testing.T) {
+	if now.Format(YYMM) != now.Time.Format(YYMM) {
+		t.Fatal("invalid result")
+	}
+}
+
+func TestTime_Format_YYMMDD(t *testing.T) {
+	if now.Format(YYMMDD) != now.Time.Format(YYMMDD) {
+		t.Fatal("invalid result")
+	}
 }
