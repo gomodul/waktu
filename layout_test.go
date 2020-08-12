@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-var now = Date(1993, 9, 10, 11, 37, 0, 0, GetLocationByUTCOffset(7))
+var now = Date(1993, 9, 10, 13, 37, 0, 0, GetLocationByUTCOffset(7))
 
 func TestTime_Format_ANSIC(t *testing.T) {
 	if now.Format(ANSIC) != now.Time.Format(ANSIC) {
@@ -110,6 +110,12 @@ func TestTime_Format_YYMM(t *testing.T) {
 
 func TestTime_Format_YYMMDD(t *testing.T) {
 	if now.Format(YYMMDD) != now.Time.Format(YYMMDD) {
+		t.Fatal("invalid result")
+	}
+}
+
+func TestTime_Format_HHMMSS(t *testing.T) {
+	if now.Format(HHMMSS) != now.Time.Format(HHMMSS) {
 		t.Fatal("invalid result")
 	}
 }
