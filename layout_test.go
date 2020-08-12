@@ -4,8 +4,6 @@ import (
 	"testing"
 )
 
-var now = Date(1993, 9, 10, 13, 37, 0, 0, GetLocationByUTCOffset(7))
-
 func TestTime_Format_ANSIC(t *testing.T) {
 	if now.Format(ANSIC) != now.Time.Format(ANSIC) {
 		t.Fatal("invalid result")

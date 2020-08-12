@@ -56,6 +56,15 @@ func (t *Time) SetDate(date interface{}) Time {
 	return Date(t.Year(), t.Month(), date.(int), t.Hour(), t.Minute(), t.Second(), t.Nanosecond(), t.Location())
 }
 
+// GetDate ex: 930910
+func (t *Time) GetDate(format ...string) string {
+	layout := YYMMDD
+	if len(format) > 0 {
+		layout = format[0]
+	}
+	return t.Format(layout)
+}
+
 // SetHour func
 func (t *Time) SetHour(hour interface{}) Time {
 	return Date(t.Year(), t.Month(), t.Day(), hour.(int), t.Minute(), t.Second(), t.Nanosecond(), t.Location())
@@ -81,6 +90,15 @@ func (t Time) In(loc *time.Location) Time {
 	return Time{
 		t.Time.In(loc),
 	}
+}
+
+// GetTime 133700
+func (t *Time) GetTime(format ...string) string {
+	layout := HHMMSS
+	if len(format) > 0 {
+		layout = format[0]
+	}
+	return t.Format(layout)
 }
 
 // LastDay func
