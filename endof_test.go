@@ -1,8 +1,10 @@
-package waktu
+package waktu_test
 
 import (
 	"fmt"
 	"testing"
+
+	. "github.com/gomodul/waktu"
 )
 
 func TestTime_EndOfDay(t *testing.T) {

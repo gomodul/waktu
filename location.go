@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// GetLocationByUTCOffset func(offset int) *time.Location
+// GetLocationByUTCOffset func(offset int) *time.Location.
 func GetLocationByUTCOffset(offset int) *time.Location {
 	if offset == 0 {
 		return time.UTC
@@ -16,5 +16,7 @@ func GetLocationByUTCOffset(offset int) *time.Location {
 		name = fmt.Sprintf("GMT+%v", offset)
 	}
 
-	return time.FixedZone(name, offset*60*60)
+	const sixty = 60
+
+	return time.FixedZone(name, offset*sixty*sixty)
 }

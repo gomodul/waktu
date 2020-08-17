@@ -1,9 +1,11 @@
-package waktu
+package waktu_test
 
 import (
 	"fmt"
 	"testing"
 	"time"
+
+	. "github.com/gomodul/waktu"
 )
 
 func TestNow(t *testing.T) {
@@ -12,6 +14,7 @@ func TestNow(t *testing.T) {
 
 func TestParse(t *testing.T) {
 	value := "9309"
+
 	resParse, errParse := Parse(YYMM, value)
 	if errParse != nil {
 		t.Fatal(errParse)

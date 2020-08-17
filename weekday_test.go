@@ -1,4 +1,4 @@
-package waktu
+package waktu_test
 
 import (
 	"fmt"

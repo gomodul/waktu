@@ -1,6 +1,6 @@
 package waktu
 
-// Month int
+// Month int.
 type Month int
 
 const (
@@ -41,8 +41,8 @@ const (
 	Desember
 )
 
-// months var
-var months = [...]string{
+// months var.
+var months = [...]string{ //nolint:gochecknoglobals
 	"Januari",
 	"Februari",
 	"Maret",
@@ -62,17 +62,17 @@ func (t Time) Month() Month {
 	return Month(t.Time.Month())
 }
 
-// SetMonth func
+// SetMonth func.
 func (t *Time) SetMonth(month int) Time {
 	return Date(t.Year(), Month(month), t.Day(), t.Hour(), t.Minute(), t.Second(), t.Nanosecond(), t.Location())
 }
 
-// String func
+// String func.
 func (m Month) String() string {
 	if Januari <= m && m <= Desember {
 		return months[m-1]
 	}
-	buf := make([]byte, 20)
+	buf := make([]byte, 20) //nolint:wsl
 	n := fmtInt(buf, uint64(m))
-	return "%!Month(" + string(buf[n:]) + ")"
+	return "%!Month(" + string(buf[n:]) + ")" //nolint:wsl
 }

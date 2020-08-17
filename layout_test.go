@@ -1,7 +1,9 @@
-package waktu
+package waktu_test
 
 import (
 	"testing"
+
+	. "github.com/gomodul/waktu"
 )
 
 func TestTime_Format_ANSIC(t *testing.T) {

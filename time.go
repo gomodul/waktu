@@ -4,119 +4,123 @@ import (
 	"time"
 )
 
-// Time struct
+// Time struct.
 type Time struct {
 	time.Time
 }
 
-// LastDay func
+// LastDay func.
 func LastDay() Time {
 	return Now().LastDay()
 }
 
-// Now func
+// Now func.
 func Now() Time {
 	loc, _ := time.LoadLocation("Asia/Jakarta")
-	return Time{
-		time.Now().In(loc),
-	}
+	return Time{time.Now().In(loc)}
 }
 
-// Parse func
+// Parse func.
 func Parse(layout, value string) (Time, error) {
 	t, err := time.Parse(layout, value)
 	return Time{t}, err
 }
 
-// Date func
+// Date func.
 func Date(year int, month Month, day, hour, min, sec, nsec int, loc *time.Location) Time {
 	if loc == nil {
 		loc = time.UTC
 	}
+
 	return Time{time.Date(year, time.Month(month), day, hour, min, sec, nsec, loc)}
 }
 
-// AddDate func
+// AddDate func.
 func (t Time) AddDate(years int, months int, days int) Time {
 	return Time{t.Time.AddDate(years, months, days)}
 }
 
-// Add func
+// Add func.
 func (t Time) Add(d time.Duration) Time {
 	return Time{t.Time.Add(d)}
 }
 
-// ResetTime ex: 1993-09-10 07:00:00 +0700 GMT+7
+// ResetTime ex: 1993-09-10 07:00:00 +0700 GMT+7.
 func (t Time) ResetTime() Time {
 	return Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, time.UTC).In(t.Location())
 }
 
-// ResetTimeLocal ex: 1993-09-10 00:00:00 +0700 GMT+7
+// ResetTimeLocal ex: 1993-09-10 00:00:00 +0700 GMT+7.
 func (t Time) ResetTimeLocal() Time {
 	return Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
 }
 
-// SetDate func
+// SetDate func.
 func (t Time) SetDate(date interface{}) Time {
 	return Date(t.Year(), t.Month(), date.(int), t.Hour(), t.Minute(), t.Second(), t.Nanosecond(), t.Location())
 }
 
-// GetDate ex: 930910
+// GetDate ex: 930910.
 func (t Time) GetDate(format ...string) string {
 	layout := YYMMDD
 	if len(format) > 0 {
 		layout = format[0]
 	}
+
 	return t.Format(layout)
 }
 
-// GetDateUTC ex: 930910
+// GetDateUTC ex: 930910.
 func (t Time) GetDateUTC(format ...string) string {
 	layout := YYMMDD
 	if len(format) > 0 {
 		layout = format[0]
 	}
+
 	return t.In(time.UTC).Format(layout)
 }
 
-// SetHour func
+// SetHour func.
 func (t Time) SetHour(hour interface{}) Time {
 	return Date(t.Year(), t.Month(), t.Day(), hour.(int), t.Minute(), t.Second(), t.Nanosecond(), t.Location())
 }
 
-// SetMinute func
+// SetMinute func.
 func (t Time) SetMinute(minute interface{}) Time {
 	return Date(t.Year(), t.Month(), t.Day(), t.Hour(), minute.(int), t.Second(), t.Nanosecond(), t.Location())
 }
 
-// SetSecond func
+// SetSecond func.
 func (t Time) SetSecond(second interface{}) Time {
 	return Date(t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), second.(int), t.Nanosecond(), t.Location())
 }
 
-// SetNanosecond func
+// SetNanosecond func.
 func (t Time) SetNanosecond(nanosecond interface{}) Time {
 	return Date(t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), nanosecond.(int), t.Location())
 }
 
-// In func
+// In func.
 func (t Time) In(loc *time.Location) Time {
 	return Time{
 		t.Time.In(loc),
 	}
 }
 
-// GetTime 133700
+// GetTime 133700.
 func (t Time) GetTime(format ...string) string {
 	layout := HHMMSS
 	if len(format) > 0 {
 		layout = format[0]
 	}
+
 	return t.Format(layout)
 }
 
-// LastDay ex: 1993-09-30 13:37:11.00000001 +0700 GMT+7
+// LastDay ex: 1993-09-30 13:37:11.00000001 +0700 GMT+7.
 func (t Time) LastDay() Time {
-	day := 24 * time.Hour
+	var twentyFour time.Duration = 24
+	day := twentyFour * time.Hour
+
 	return t.SetDate(1).AddDate(0, 1, 0).Add(-day - time.Nanosecond)
 }

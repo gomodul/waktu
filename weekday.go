@@ -1,6 +1,6 @@
 package waktu
 
-// Weekday int
+// Weekday int.
 type Weekday int
 
 const (
@@ -26,7 +26,7 @@ const (
 	Sabtu
 )
 
-var days = [...]string{
+var days = [...]string{ //nolint:gochecknoglobals
 	"Minggu",
 	"Senin",
 	"Selasa",
@@ -46,7 +46,9 @@ func (d Weekday) String() string {
 	if Minggu <= d && d <= Sabtu {
 		return days[d]
 	}
+
 	buf := make([]byte, 20)
 	n := fmtInt(buf, uint64(d))
+
 	return "%!Weekday(" + string(buf[n:]) + ")"
 }
