@@ -46,18 +46,23 @@ func (t Time) Add(d time.Duration) Time {
 	return Time{t.Time.Add(d)}
 }
 
-// ResetTime func
+// ResetTime ex: 1993-09-10 07:00:00 +0700 GMT+7
 func (t Time) ResetTime() Time {
 	return Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, time.UTC).In(t.Location())
 }
 
+// ResetTimeLocal ex: 1993-09-10 00:00:00 +0700 GMT+7
+func (t Time) ResetTimeLocal() Time {
+	return Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
+}
+
 // SetDate func
-func (t *Time) SetDate(date interface{}) Time {
+func (t Time) SetDate(date interface{}) Time {
 	return Date(t.Year(), t.Month(), date.(int), t.Hour(), t.Minute(), t.Second(), t.Nanosecond(), t.Location())
 }
 
 // GetDate ex: 930910
-func (t *Time) GetDate(format ...string) string {
+func (t Time) GetDate(format ...string) string {
 	layout := YYMMDD
 	if len(format) > 0 {
 		layout = format[0]
@@ -65,23 +70,32 @@ func (t *Time) GetDate(format ...string) string {
 	return t.Format(layout)
 }
 
+// GetDateUTC ex: 930910
+func (t Time) GetDateUTC(format ...string) string {
+	layout := YYMMDD
+	if len(format) > 0 {
+		layout = format[0]
+	}
+	return t.In(time.UTC).Format(layout)
+}
+
 // SetHour func
-func (t *Time) SetHour(hour interface{}) Time {
+func (t Time) SetHour(hour interface{}) Time {
 	return Date(t.Year(), t.Month(), t.Day(), hour.(int), t.Minute(), t.Second(), t.Nanosecond(), t.Location())
 }
 
 // SetMinute func
-func (t *Time) SetMinute(minute interface{}) Time {
+func (t Time) SetMinute(minute interface{}) Time {
 	return Date(t.Year(), t.Month(), t.Day(), t.Hour(), minute.(int), t.Second(), t.Nanosecond(), t.Location())
 }
 
 // SetSecond func
-func (t *Time) SetSecond(second interface{}) Time {
+func (t Time) SetSecond(second interface{}) Time {
 	return Date(t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), second.(int), t.Nanosecond(), t.Location())
 }
 
 // SetNanosecond func
-func (t *Time) SetNanosecond(nanosecond interface{}) Time {
+func (t Time) SetNanosecond(nanosecond interface{}) Time {
 	return Date(t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), nanosecond.(int), t.Location())
 }
 
@@ -93,7 +107,7 @@ func (t Time) In(loc *time.Location) Time {
 }
 
 // GetTime 133700
-func (t *Time) GetTime(format ...string) string {
+func (t Time) GetTime(format ...string) string {
 	layout := HHMMSS
 	if len(format) > 0 {
 		layout = format[0]
@@ -101,7 +115,7 @@ func (t *Time) GetTime(format ...string) string {
 	return t.Format(layout)
 }
 
-// LastDay func
+// LastDay ex: 1993-09-30 13:37:11.00000001 +0700 GMT+7
 func (t Time) LastDay() Time {
 	day := 24 * time.Hour
 	return t.SetDate(1).AddDate(0, 1, 0).Add(-day - time.Nanosecond)
