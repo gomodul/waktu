@@ -4,36 +4,36 @@ package waktu
 type Weekday int
 
 const (
-	// Senin = 0
-	Senin Weekday = iota
+	// Minggu = 0
+	Minggu Weekday = iota
 
-	// Selasa = 1
+	// Senin = 1
+	Senin
+
+	// Selasa = 2
 	Selasa
 
-	// Rabu = 2
+	// Rabu = 3
 	Rabu
 
-	// Kamis = 3
+	// Kamis = 4
 	Kamis
 
-	// Jumat = 4
+	// Jumat = 5
 	Jumat
 
-	// Sabtu = 5
+	// Sabtu = 6
 	Sabtu
-
-	// Minggu = 6
-	Minggu
 )
 
 var days = [...]string{
+	"Minggu",
 	"Senin",
 	"Selasa",
 	"Rabu",
 	"Kamis",
 	"Jumat",
 	"Sabtu",
-	"Minggu",
 }
 
 // Weekday returns the day of the week specified by t.
@@ -41,7 +41,7 @@ func (t Time) Weekday() Weekday {
 	return Weekday(t.Time.Weekday())
 }
 
-// String returns the English name of the day ("Senin", "Selasa", ...).
+// String returns the English name of the day ("Minggu", "Senin", ...).
 func (d Weekday) String() string {
 	if Minggu <= d && d <= Sabtu {
 		return days[d]

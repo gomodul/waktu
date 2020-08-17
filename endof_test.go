@@ -11,12 +11,12 @@ func TestTime_EndOfDay(t *testing.T) {
 
 func TestTime_EndOfWeek(t *testing.T) {
 	endOfWeek := now.EndOfWeek()
-	if int(endOfWeek.Weekday()) != int(Minggu) {
+	if int(endOfWeek.Weekday()) != int(Sabtu) {
 		t.Fatal("invalid value")
 	}
 
-	endOfWeek = now.EndOfWeek(Minggu)
-	if int(endOfWeek.Weekday()) != int(Sabtu) {
+	endOfWeek = now.EndOfWeek(Senin)
+	if int(endOfWeek.Weekday()) != int(Minggu) {
 		t.Fatal("invalid value")
 	}
 }
