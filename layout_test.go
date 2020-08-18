@@ -6,6 +6,12 @@ import (
 	. "github.com/gomodul/waktu"
 )
 
+func TestTime_Format_DEFAULT(t *testing.T) {
+	if now.Format(DEFAULT) != now.Time.Format(DEFAULT) {
+		t.Fatal("invalid result")
+	}
+}
+
 func TestTime_Format_ANSIC(t *testing.T) {
 	if now.Format(ANSIC) != now.Time.Format(ANSIC) {
 		t.Fatal("invalid result")
