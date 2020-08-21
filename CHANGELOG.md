@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.0.1-alpha.3](https://github.com/gomodul/waktu/tree/v0.0.1-alpha.3) (2020-08-18)
+
+[Full Changelog](https://github.com/gomodul/waktu/compare/v0.0.1-alpha.2...v0.0.1-alpha.3)
+
 ## [v0.0.1-alpha.2](https://github.com/gomodul/waktu/tree/v0.0.1-alpha.2) (2020-08-17)
 
 [Full Changelog](https://github.com/gomodul/waktu/compare/v0.0.1-alpha.1...v0.0.1-alpha.2)
