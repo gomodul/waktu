@@ -120,6 +120,12 @@ func TestTime_Format_YYMMDD(t *testing.T) {
 	}
 }
 
+func TestTime_Format_YMMDDHHMMSS(t *testing.T) {
+	if now.Format(MMDDHHMMSS) != now.Time.Format(MMDDHHMMSS) {
+		t.Fatal("invalid result")
+	}
+}
+
 func TestTime_Format_HHMMSS(t *testing.T) {
 	if now.Format(HHMMSS) != now.Time.Format(HHMMSS) {
 		t.Fatal("invalid result")
