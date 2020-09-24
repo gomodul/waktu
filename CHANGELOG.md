@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.0.1-alpha.4](https://github.com/gomodul/waktu/tree/v0.0.1-alpha.4) (2020-09-24)
+
+[Full Changelog](https://github.com/gomodul/waktu/compare/v0.0.1-alpha.3...v0.0.1-alpha.4)
+
+**Merged pull requests:**
+
+- v0.0.1-alpha.4 [\#3](https://github.com/gomodul/waktu/pull/3) ([mahbubzulkarnain](https://github.com/mahbubzulkarnain))
+
 ## [v0.0.1-alpha.3](https://github.com/gomodul/waktu/tree/v0.0.1-alpha.3) (2020-08-18)
 
 [Full Changelog](https://github.com/gomodul/waktu/compare/v0.0.1-alpha.2...v0.0.1-alpha.3)
